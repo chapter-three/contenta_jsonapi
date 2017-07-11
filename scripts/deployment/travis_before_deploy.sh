@@ -51,4 +51,24 @@ rm_site(){
            $default_dir/files
 }
 
+contenta_profile_cleanup(){
+
+     if [ -z $1 ] ; then
+        echo "Please pass a Drupal Base Path to the contenta_profile_cleanup function" 1>&2
+        exit 1
+    fi
+    
+    profile_contenta=$1/profiles/contrib/contenta_jsonapi
+    sudo rm -rf $profile_contenta/.[^.]* \
+                $profile_contenta/tests \
+                $profile_contenta/node_modules \
+                $profile_contenta/docs \
+                $profile_contenta/installer.sh \
+                $profile_contenta/package.json \
+                $profile_contenta/yarn.lock \
+                $profile_contenta/nigthwatch.json
+                $profile_contenta/
+
+}
+
 $@
